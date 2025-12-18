@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 const FormHandling = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const numRegex=/^\d+$/;
 
 
   // let [myname,setname]=useState("")
@@ -20,21 +21,30 @@ const FormHandling = () => {
   }
 
   let handleSubmit=(e)=>{
+    let check=true;
 
     e.preventDefault()
     if(form.myname.trim()==""){
       alert("Name is missing")
+      check=false
       return
     }
     if(!form.myemail.trim().match(emailRegex)){
       alert("wrong email")
+      check=false
       return
     }
-    if(form.mynumber.trim().match(/[0-9]/)){
+    if(!(form.mynumber.trim().match(numRegex) && form.mynumber.length==10)){
       alert("Enter valid number");
+      check=false
       return
     }
     
+    if(check){
+      alert(  "name is " + form.myname +
+              "\nemail is "+ form.myemail+ 
+           "\nnumber is " + form.mynumber)
+    }
 
   }
 
