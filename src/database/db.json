@@ -1,0 +1,18 @@
+{
+   "movie":[
+            
+            {
+                "name":"uday",
+                "age":1234
+            },
+             {
+                "name":"vedant",
+                "age":9852
+            },
+             {
+                "name":"pawan",
+                "age":5488
+            }
+
+   ]
+}
