@@ -1,28 +1,44 @@
 import React, { useState } from 'react'
+import "./seat.css"
 
 const seat = () => {
     
-    let seat=[1,2,3,4,5];
+    let seats=[1,2,3,4,5];
 
     let [selectSeat,setSelectSeat]=useState([]);
 
-    let togleSeat=(seat)=>{
-      setSelectSeat(prev=>
-        prev.includes(seat)
-        ? prev.filter((s)=>s!==seat)
-        : [...prev,seat]
-      );
-    };
+   let toggleseat=(seat)=>{
+
+    if(selectSeat.includes(seat)){
+
+      setSelectSeat(selectSeat.filter(s=>s !== seat));
+    }
+    else{
+      setSelectSeat([...selectSeat,seat]);
+    }
+   }
 
     
 
   return (
-    <div className='border h-20 flex gap-5 justify-center items-center'>
+    <div className='container'>
         hello
-        {seat.map((e)=>
-        (<div onClick={()=>togleSeat(e)} key={e}
-         className='border h-10 w-10 flex justify-center items-center cursor-pointer bg-red-500'>{
-          e} </div>))}
+        
+        <div className='seat-grid'>
+
+        {seats.map((seat)=>(
+          <button 
+          key={seat}
+          className={
+            selectSeat.includes(seat) ? "seat selected": " seat "
+          }
+          onClick={()=>toggleseat(seat)}
+          >
+            {seat}
+          </button>
+        ))}
+
+        </div>
 
     </div>
   )
